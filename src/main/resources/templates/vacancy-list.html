@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacancy List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Vacancies</h1>
+        
+
+        <form action="/vacancy" method="get" class="form-inline mb-4">
+            <input type="text" name="search" class="form-control mr-2" placeholder="Search" value="${search}">
+            <input type="text" name="city" class="form-control mr-2" placeholder="City" value="${city}">
+            <input type="text" name="exp" class="form-control mr-2" placeholder="Experience" value="${experience}">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <div class="mt-4">
+            <h3>Середня заробітна плата розробника <span> <span th:text="${averageSalaryUSD}"></span> <span>$</span></span></h3>
+        </div>
+
+        <div class="vacancy-list">
+            <div class="list-group">
+                <div th:each="vacancy : ${vacancies}" class="list-group-item">
+                    <h5 th:text="${vacancy.name}">Vacancy Name</h5>
+                    <p><strong>Date:</strong> <span th:text="${vacancy.date}">Date</span></p>
+                    <p><strong>Location:</strong> <span th:text="${vacancy.location}">Location</span></p>
+                    <p><strong>Company:</strong> <span th:text="${vacancy.company}">Company</span></p>
+                    <a th:href="${vacancy.reference}" class="btn btn-link" target="_blank">View Vacancy</a>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.5/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
